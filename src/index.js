@@ -12,9 +12,11 @@ const port = 3300;
 dotenv.config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+console.log(process.env.PORT_VIEWS);
+
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [process.env.PORT_VIEWS || "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
